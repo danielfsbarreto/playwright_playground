@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "Ensuring juice-shop is up..."
+docker compose up -d --wait juice-shop
+
+exec npx playwright test "$@"
